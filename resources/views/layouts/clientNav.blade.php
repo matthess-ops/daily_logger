@@ -36,16 +36,23 @@
             <li class="nav-item">
               <a class="nav-link {{ Route::currentRouteNamed('client.daily-report') ? 'active' : '' }}" href="{{ route('client.daily-report') }}">Rapportage</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteNamed('client.activities-logger') ? 'active' : '' }}" href="{{ route('client.activities-logger') }}">Activiteiten</a>
+              </li> --}}
+
+
+              <li class="nav-item dropdown {{ Route::currentRouteNamed('client.activities-logger') ? 'active' : '' }} {{ Route::currentRouteNamed('client.activities-config') ? 'active' : '' }}">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Activiteiten
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('client.activities-logger') }}">Activiteiten logger</a>
+                  <a class="dropdown-item" href="{{ route('client.activities-config') }}">Activiteiten config</a>
+
+                </div>
               </li>
 
-              {{-- <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteNamed('client.daily-report-vis') ? 'active' : '' }}" href="{{ route('client.daily-report-vis') }}">Rapport vis</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteNamed('client.activities-vis') ? 'active' : '' }}" href="{{ route('client.activities-vis') }}">Activiteiten vis</a>
-              </li> --}}
+              
 
               <li class="nav-item dropdown {{ Route::currentRouteNamed('client.daily-report-vis') ? 'active' : '' }} {{ Route::currentRouteNamed('client.activities-vis') ? 'active' : '' }}">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
