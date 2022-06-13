@@ -40,14 +40,36 @@
                 <a class="nav-link {{ Route::currentRouteNamed('client.activities-logger') ? 'active' : '' }}" href="{{ route('client.activities-logger') }}">Activiteiten</a>
               </li>
 
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteNamed('client.daily-report-vis') ? 'active' : '' }}" href="{{ route('client.daily-report-vis') }}">Rapport vis</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteNamed('client.activities-vis') ? 'active' : '' }}" href="{{ route('client.activities-vis') }}">Activiteiten vis</a>
+              </li> --}}
+
+              <li class="nav-item dropdown {{ Route::currentRouteNamed('client.daily-report-vis') ? 'active' : '' }} {{ Route::currentRouteNamed('client.activities-vis') ? 'active' : '' }}">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Grafieken
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('client.daily-report-vis') }}">Dagelijkse rapporten</a>
+                  <a class="dropdown-item" href="{{ route('client.activities-vis') }}">Activiteiten</a>
+
+                </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteNamed('client.account') ? 'active' : '' }}" href="{{ route('client.account') }}">Account</a>
+
+
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Account
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('client.account-personal', ['id' =>Auth::id()]) }}">Persoonlijke gegevens</a>
+                  <a class="dropdown-item" href="{{ route('client.edit-account-password', ['id' =>Auth::id()]) }}">Wachtwoord Wijzigen</a>
+
+                </div>
               </li>
 
           </ul>

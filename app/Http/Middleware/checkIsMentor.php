@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
-class CheckRole
+class checkIsMentor
 {
     /**
      * Handle an incoming request.
@@ -15,6 +16,12 @@ class CheckRole
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
-    }
+        $user = Auth::user();
+        if($user->isMentor()){
+
+            return $next($request);
+
+        }
+            return redirect()->back();
+          }
 }

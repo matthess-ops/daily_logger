@@ -7,15 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     protected $fillable = [
-        'user_id', 
-        'firstname', 
-        'lastname', 
+        'user_id',
+        'firstname',
+        'lastname',
         'street',
         'street_nr',
         'postcode',
         'phone_number',
         'city',
     ];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at'=> 'datetime',
+    ];
+
+    // public function user()
+    // {
+    //     return $this->hasOne(User::class, 'id', 'user_id');
+
+    // }
 
     // $table->id();
     // $table->timestamps();

@@ -19,11 +19,11 @@ class ClientsTableSeeder extends Seeder
         foreach ($users as $user) {
             if($user->role == "client"){
                 Client::create([
-                    'user_id'=>$user->id, 
-                    'firstname'=>$faker->firstname, 
-                    'lastname'=>$faker->lastname, 
+                    'user_id'=>$user->id,
+                    'firstname'=>$faker->firstname,
+                    'lastname'=>$faker->lastname,
                     'street'=>$faker->streetName,
-                    'street_nr'=>Str::random(100),
+                    'street_nr'=>rand(0,100),
                     'postcode'=>$faker->postcode,
                     'phone_number'=>$faker->phoneNumber,
                     'city'=>$faker->city,
