@@ -10,8 +10,7 @@ class ActivityValue extends Model
         'user_id',
         'scaled_activities',
         'main_activities',
-      
-       
+         
     ];
 
     protected $casts = [
@@ -19,7 +18,7 @@ class ActivityValue extends Model
         'updated_at'=> 'datetime',
         'main_activities' => 'array',
         'scaled_activities' => 'array',
-
+        'main_activities_colors' => 'array',
     ];
 
     

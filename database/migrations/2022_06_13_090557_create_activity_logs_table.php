@@ -17,8 +17,8 @@ class CreateActivityLogsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('user_id');
-            $table->json('scaled_activities');
-            $table->json('main_activities');
+            $table->json('activity_data');
+            $table->string('date_today');
 
         });
     }

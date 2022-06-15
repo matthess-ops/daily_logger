@@ -44,9 +44,12 @@ Route::get('/client/daily-report', function () {
 
 /////////////client activities/////////////////
 
-Route::get('/client/activities-logger', function () {
-    return view('client.activities.activities-logger');
-})->name('client.activities-logger')->middleware('auth','checkIsClient');
+// Route::get('/client/activities-logger', function () {
+//     return view('client.activities.activities-logger');
+// })->name('client.activities-logger')->middleware('auth','checkIsClient');
+
+Route::get('/client/activities-logger/edit', 'ActivitiesController@edit'
+)->name('client.activities-logger')->middleware('auth','checkIsClient');
 
 Route::get('/client/activities-config', function () {
     return view('client.activities.activities-config');

@@ -3,8 +3,43 @@
 @section('content')
     <h1>activities logger</h1>
     <div id="app">
-    <test-component>
+    {{-- <test-component> --}}
+        
+        {{dd($activityLog)}}
+        {{-- {{ json_encode($activityValues->created_at) }} --}}
+        {{-- @foreach ($$activityLog->activity_data as $timeslot)
+        <div>test</div>
+      
+        @endforeach --}}
+
+
+
+
+
     </div>
+
+<div>
+
+    <h1>Custom Checkboxes</h1>
+    <label class="containert">One
+      <input style="background-color: #2196F3;" type="checkbox" checked="checked">
+      <span class="checkmark"></span>
+    </label>
+    <label class="containert">Two
+      <input style="background-color: #2196F3;"  type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+    <label class="containert">Three
+      <input type="checkbox">
+      <span style="background-color:blueviolet" class="checkmark"></span>
+    </label>
+    <label class="containert">Four
+      <input type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+    
+
+</div>
 
     <div class="container">
         <div class="row">

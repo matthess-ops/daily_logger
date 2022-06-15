@@ -50088,8 +50088,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\desktop\Desktop\projecten\final_project\daily_logger\daily_logger\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\desktop\Desktop\projecten\final_project\daily_logger\daily_logger\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\matthijn\Desktop\daily_rapportage\daily_logger\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\matthijn\Desktop\daily_rapportage\daily_logger\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

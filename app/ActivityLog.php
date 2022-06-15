@@ -8,8 +8,7 @@ class ActivityLog extends Model
 {
     protected $fillable = [
         'user_id',
-        'scaled_activities',
-        'main_activities',
+        'activity_data',
 
 
     ];
@@ -17,8 +16,9 @@ class ActivityLog extends Model
     protected $casts = [
         'created_at' => 'datetime',
         'updated_at'=> 'datetime',
-        'main_activities' => 'array',
-        'scaled_activities' => 'array',
+        'activity_data' => 'array',
 
     ];
+
+    
 }

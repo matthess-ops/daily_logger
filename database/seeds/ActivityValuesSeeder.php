@@ -1,6 +1,7 @@
 <?php
 
 use App\ActivityLog;
+use App\ActivityValue;
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Client;
@@ -22,13 +23,22 @@ class ActivityValuesSeeder extends Seeder
 
         $clients = Client::all();
         foreach ($clients as $client) {
-            ActivityLog::create([
+            ActivityValue::create([
                 'user_id'=>$client->user_id,
-                'main_activities'=>json_encode(["first"=>["a"=>1,"b"=>2],"second"=>["a"=>1,"b"=>2]]),
-                'scaled_activities'=>json_encode(["test","test"]),
+                // 'main_activities'=>json_encode([]),
+                'main_activities'=>json_encode(["werken","programmeren","gamen","koken","afwassen"]),
+                'scaled_activities'=>json_encode(["humeur","spanning","blijheid"]),
+                'main_activities_colors'=>json_encode(["#f5b342","#f5b342","#42ecf5","#f54290","#9042f5"]),
 
             ]);
         }
+
+        // $table->id();
+        // $table->timestamps();
+        // $table->string('user_id');
+        // $table->json('scaled_activities');
+        // $table->json('main_activities');
+        // $table->json('main_activities_colors');
 
 
 

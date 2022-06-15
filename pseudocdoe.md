@@ -1,3 +1,39 @@
+activity logger:
+
+24 x4 checkboxes. Elke check box is 15 min. Elke check box heeft de state van
+activity values. Aka 1 main value en een aantal scaled values. De scheduler
+maakt een aantal activity_logs aan. Elk activity_log is een array van
+
+
+
+id
+user_id
+created_at
+updated_at
+activities = [[id:1, main_activity: werken, scaledactivities:[humeur:8,stemming:9]], x 96]
+
+Als de client naar activity logger heen gaat return de activity_log van vandaag plus de activity_values van de client
+
+activity_values
+
+id
+user_id
+created_at
+updated_at
+main_activities [werken, koken, lopen]
+scaled_activities = [humeur, blijheid etc]
+main_activities_colors: [red, blue, green] // zelfde size
+
+
+
+
+
+
+
+
+
+
+
 dailyreports table
 dailyreport questions table
 

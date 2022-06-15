@@ -19,6 +19,8 @@ class CreateActivityValuesTable extends Migration
             $table->string('user_id');
             $table->json('scaled_activities');
             $table->json('main_activities');
+            $table->json('main_activities_colors');
+
         });
     }
 
