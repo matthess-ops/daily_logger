@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Client;
-use App\ActivityLog;
+use Faker\Generator as Faker;
 
 
 class ActivityLogsSeeder extends Seeder
@@ -15,14 +15,14 @@ class ActivityLogsSeeder extends Seeder
      */
     public function run()
     {
-        $clients = Client::all();
-        foreach ($clients as $client) {
-            ActivityLog::create([
-                'user_id'=>$client->user_id,
-                'main_activities'=>json_encode(["test","test"]),
-                'scaled_activities'=>json_encode(["test","test"]),
-            
-            ]);
-        }
+        // $clients = Client::all();
+        // foreach ($clients as $client) {
+        //     ActivityLog::create([
+        //         'user_id'=>$client->user_id,
+        //         'main_activities'=>json_encode(["test","test"]),
+        //         'scaled_activities'=>json_encode(["test","test"]),
+
+        //     ]);
+        // }
     }
 }

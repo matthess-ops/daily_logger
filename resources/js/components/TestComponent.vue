@@ -4,6 +4,7 @@
 
     <button @click="testPost">Test post request</button>
 
+
   </div>
 </template>
 
@@ -16,6 +17,12 @@ export default {
         firstname: "test",
         lastname: "vier"
       },
+      daySlots:{
+          first:{
+              start: "24:00",
+              end: ""
+          }
+      }
     };
   },
   computed: {},
@@ -23,8 +30,9 @@ export default {
 
     testPost(){
 
-      axios.post("/api/signup", this.form).then((response) => {
+      axios.post("/testpost", this.form).then((response) => {
           console.log(response.status)
+          console.log(response.data)
         // if (response.status === 200) {
         //   if (response.data.status == "success") {
 

@@ -24,13 +24,13 @@ class ActivityValuesSeeder extends Seeder
         foreach ($clients as $client) {
             ActivityLog::create([
                 'user_id'=>$client->user_id,
-                'main_activities'=>json_encode(["test","test"]),
+                'main_activities'=>json_encode(["first"=>["a"=>1,"b"=>2],"second"=>["a"=>1,"b"=>2]]),
                 'scaled_activities'=>json_encode(["test","test"]),
-            
+
             ]);
         }
 
 
-      
+
     }
 }

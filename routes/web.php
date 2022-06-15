@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test', 'TestController@clientnaw'
 );
 
+Route::post('/testpost','TestController@testpost');
+
 
 ///////// overige route//////////////
 
