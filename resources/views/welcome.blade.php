@@ -65,6 +65,8 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            {{error_log("kutzooi")}}
+            {{Debugbar::error('Error!')}}
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth

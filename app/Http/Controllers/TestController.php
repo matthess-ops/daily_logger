@@ -11,12 +11,12 @@ use App\ActivityValue;
 class TestController extends Controller
 {
     public function clientnaw(){
-
+        error_log("dit werkt");
         // $clientnaw = Client::all();
         // $userdata = $clientnaw->user;
-        $users = User::all();
-        $client = $users->client;
-        return view('test.testmiddleware',compact('users'),compact('client'));
+        // $users = User::all();
+        // $client = $users->client;
+        // return view('test.testmiddleware',compact('users'),compact('client'));
     }
 
     public function testpost(Request $request){
