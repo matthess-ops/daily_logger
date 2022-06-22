@@ -6,6 +6,7 @@ use App\Client;
 use App\ActivityLog;
 use Faker\Generator as Faker;
 use Illuminate\Support\Carbon;
+use App\ActivityValue;
 
 
 class ActivityLogsSeeder extends Seeder
@@ -18,18 +19,59 @@ class ActivityLogsSeeder extends Seeder
     public function run()
     {
 
-        $activityData = [];
-        for ($i=0; $i < 96; $i++) { 
-            $part = ["id"=>$i,"main_activity"=>"","scaled_activities"=>[],"color"=>""];
-            array_push($activityData,$part);
-        }
+
+      
 
 
         $clients = Client::all();
         foreach ($clients as $client) {
+
+            $activitiesValue= $client->activityValue;
+           
+     
+            $dummyScaledActivitiesNotNull = [];
+            foreach ($activitiesValue->scaled_activities as $scaledActivity) {
+                array_push($dummyScaledActivitiesNotNull,['name'=>$scaledActivity, 'score'=>rand(0,10)]);
+            }
+
+            $dummyScaledActivitiesNull = [];
+            foreach ($activitiesValue->scaled_activities as $scaledActivity) {
+                array_push($dummyScaledActivitiesNull,['name'=>$scaledActivity, 'score'=>null]);
+            }
+
+
+
+
+            
+            
+            // error_log($randomMainActivity);
+            $activityData = [];
+            for ($i=0; $i < 96; $i++) { 
+                $pickedMainActivity = [];
+                $pickedMainActivityColor =[];
+                $randInt = rand(0,3);
+                if($randInt == 2){
+                    $pickedMainActivity = null;
+                    $pickedMainActivityColor =null;
+                    $part = ["id"=>$i,"main_activity"=>$pickedMainActivity,"scaled_activities"=> $dummyScaledActivitiesNull ,"color"=>$pickedMainActivityColor];
+                    array_push($activityData,$part);
+                }else{
+                    $randomInt = rand(0,count($activitiesValue->main_activities)-1); 
+                    $pickedMainActivity = $activitiesValue->main_activities[$randomInt];
+                    $pickedMainActivityColor = $activitiesValue->main_activities_colors[$randomInt];
+                    $part = ["id"=>$i,"main_activity"=>$pickedMainActivity,"scaled_activities"=> $dummyScaledActivitiesNotNull ,"color"=>$pickedMainActivityColor];
+                    array_push($activityData,$part);
+                }
+
+                
+            }
+
+
+
+
             ActivityLog::create([
                 'user_id'=>$client->user_id,
-                'activity_data'=>json_encode($activityData),
+                'activity_data'=>$activityData,
                 'date_today'=> Carbon::now()->format('Y-m-d')
 
             ]);

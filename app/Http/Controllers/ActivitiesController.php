@@ -16,9 +16,9 @@ class ActivitiesController extends Controller
         error_log("stuff is called auth id ".Auth::id());
         $activityLog=ActivityLog::where("user_id",Auth::id())->where('date_today',Carbon::now()->format('Y-m-d'))->first();
         $activityValues=ActivityValue::where("user_id",Auth::id())->first();
-       error_log("werkt dit");
-        error_log("type is ".gettype($activityLog->activity_data));
-        error_log("lefakc ".$activityLog->activity_data[0]);
+        // $beh = $activityLog->activity_data;
+        // error_log(gettype($activityLog));
+        // error_log(json_encode($beh));
 
 
         return view('client.activities.activities-logger',compact('activityLog','activityValues'));

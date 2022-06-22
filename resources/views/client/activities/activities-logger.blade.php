@@ -3,14 +3,33 @@
 @section('content')
     <h1>activities logger</h1>
     <div id="app">
+        
     {{-- <test-component> --}}
         
-        {{dd($activityLog)}}
-        {{-- {{ json_encode($activityValues->created_at) }} --}}
-        {{-- @foreach ($$activityLog->activity_data as $timeslot)
-        <div>test</div>
-      
-        @endforeach --}}
+        {{gettype($activityLog->activity_data)}}
+        {{-- {{ json_encode($activityLog->activity_data) }} --}}
+
+        @php
+        $moduloCounter = 1
+        @endphp
+
+        @foreach ($activityLog->activity_data as $key=>$item)
+        @if (($key) % 4 == 0)
+        {{ $moduloCounter-1 }}:00  - {{ $moduloCounter }}:00
+
+         {{-- count iers   {{ $moduloCounter }} --}}
+
+        @php
+        $moduloCounter =$moduloCounter+1;
+        @endphp
+        @endif
+        <label class="containert">checkbox {{ $item["id"]}} {{ $item["main_activity"]}}
+            <input id= "{{ $item["id"]}}"  type="checkbox">
+            <span style="background-color:{{ $item["color"] }}" class="checkmark"></span>
+          </label>
+        @endforeach
+       
+    
 
 
 

@@ -26,9 +26,9 @@ class ActivityValuesSeeder extends Seeder
             ActivityValue::create([
                 'user_id'=>$client->user_id,
                 // 'main_activities'=>json_encode([]),
-                'main_activities'=>json_encode(["werken","programmeren","gamen","koken","afwassen"]),
-                'scaled_activities'=>json_encode(["humeur","spanning","blijheid"]),
-                'main_activities_colors'=>json_encode(["#f5b342","#f5b342","#42ecf5","#f54290","#9042f5"]),
+                'main_activities'=>["werken","programmeren","gamen","koken","afwassen"],
+                'scaled_activities'=>["humeur","spanning","blijheid"],
+                'main_activities_colors'=>["#f5b342","#f5b342","#42ecf5","#f54290","#9042f5"],
 
             ]);
         }
