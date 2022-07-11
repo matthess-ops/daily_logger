@@ -42,16 +42,22 @@
                         <div class="form-group">
                             <label for="{{ $item['id'] }}">{{ $item['activity'] }}</label>
                             <select class="form-control" id="{{ $item['id'] }}" name="scaled[]">
-                                <option value= "1">1</option>
-                                <option value= "2">>2</option>
-                                <option value= "3">>3</option>
-                                <option value= "4">>4</option>
-                                <option value= "5">>5</option>
-                                <option value= "6">>6</option>
-                                <option value= "7">>7</option>
-                                <option value= "8">>8</option>
-                                <option value= "9">>9</option>
-                                <option value= "10">>10</option>
+                                <option value= "{{ json_encode(["id"=>$item['id'],"value"=>1]) }}">1</option>
+                                <option value= "{{ json_encode(["id"=>$item['id'],"value"=>2]) }}">2</option>
+                                <option value= "{{ json_encode(["id"=>$item['id'],"value"=>3]) }}">3</option>
+                                <option value= "{{ json_encode(["id"=>$item['id'],"value"=>4]) }}">4</option>
+                                <option value= "{{ json_encode(["id"=>$item['id'],"value"=>5]) }}">5</option>
+
+                                {{-- <option value= "{{ $item['id'] }}_1">1</option>
+                                <option value= "{{ $item['id'] }}_2">2</option>
+                                <option value= "{{ $item['id'] }}_3">3</option>
+                                <option value= "{{ $item['id'] }}_4">4</option>
+                                <option value= "{{ $item['id'] }}_5">5</option>
+                                <option value= "{{ $item['id'] }}_6">6</option>
+                                <option value= "{{ $item['id'] }}_7">7</option>
+                                <option value= "{{ $item['id'] }}_8">8</option>
+                                <option value= "{{ $item['id'] }}_9">9</option>
+                                <option value= "{{ $item['id'] }}_10">10</option> --}}
 
                             </select>
                         </div>
