@@ -20,35 +20,35 @@ class ActivityLogsSeeder extends Seeder
     {
 
 
-      
+
 
 
         $clients = Client::all();
         foreach ($clients as $client) {
 
             $activitiesValue= $client->activityValue;
-           
-     
+
+
             $dummyScaledActivitiesNotNull = [];
             foreach ($activitiesValue->scaled_activities as $scaledActivity) {
-                array_push($dummyScaledActivitiesNotNull,['name'=>$scaledActivity, 'score'=>rand(0,10)]);
+                array_push($dummyScaledActivitiesNotNull,['name'=>$scaledActivity["activity"], 'score'=>rand(0,10)]);
             }
 
             $dummyScaledActivitiesNull = [];
             foreach ($activitiesValue->scaled_activities as $scaledActivity) {
-                array_push($dummyScaledActivitiesNull,['name'=>$scaledActivity, 'score'=>null]);
+                array_push($dummyScaledActivitiesNull,['name'=>$scaledActivity["activity"], 'score'=>null]);
             }
 
 
 
 
-            
-            
+
+
             // error_log($randomMainActivity);
             $activityData = [];
-            for ($i=0; $i < 96; $i++) { 
+            for ($i=0; $i < 96; $i++) {
                 $pickedMainActivity = [];
-                $pickedMainActivityColor =[];
+                // $pickedMainActivityColor =[];
                 $randInt = rand(0,3);
                 if($randInt == 2){
                     $pickedMainActivity = null;
@@ -56,14 +56,14 @@ class ActivityLogsSeeder extends Seeder
                     $part = ["id"=>$i,"main_activity"=>$pickedMainActivity,"scaled_activities"=> $dummyScaledActivitiesNull ,"color"=>$pickedMainActivityColor];
                     array_push($activityData,$part);
                 }else{
-                    $randomInt = rand(0,count($activitiesValue->main_activities)-1); 
+                    $randomInt = rand(0,count($activitiesValue->main_activities)-1);
                     $pickedMainActivity = $activitiesValue->main_activities[$randomInt];
-                    $pickedMainActivityColor = $activitiesValue->main_activities_colors[$randomInt];
-                    $part = ["id"=>$i,"main_activity"=>$pickedMainActivity,"scaled_activities"=> $dummyScaledActivitiesNotNull ,"color"=>$pickedMainActivityColor];
+                    // $pickedMainActivityColor = $activitiesValue->main_activities_colors[$randomInt];
+                    $part = ["id"=>$i,"main_activity"=>$pickedMainActivity["activity"],"scaled_activities"=> $dummyScaledActivitiesNotNull ,"color"=>$pickedMainActivity["color"]];
                     array_push($activityData,$part);
                 }
 
-                
+
             }
 
 

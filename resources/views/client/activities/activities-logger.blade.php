@@ -3,62 +3,123 @@
 @section('content')
     <h1>activities logger</h1>
     <div id="app">
-        
-    {{-- <test-component> --}}
-        
-        {{gettype($activityLog->activity_data)}}
-        {{-- {{ json_encode($activityLog->activity_data) }} --}}
+        {{ $activityValues }}
+        {{-- <test-component> --}}
 
-        @php
-        $moduloCounter = 1
-        @endphp
+        <form action="{{ route('client.update-activities', ['id' => $activityLog->id]) }}" method="POST">
+            {{ method_field('PUT') }}
 
-        @foreach ($activityLog->activity_data as $key=>$item)
-        @if (($key) % 4 == 0)
-        {{ $moduloCounter-1 }}:00  - {{ $moduloCounter }}:00
-
-         {{-- count iers   {{ $moduloCounter }} --}}
-
-        @php
-        $moduloCounter =$moduloCounter+1;
-        @endphp
-        @endif
-        <label class="containert">checkbox {{ $item["id"]}} {{ $item["main_activity"]}}
-            <input id= "{{ $item["id"]}}"  type="checkbox">
-            <span style="background-color:{{ $item["color"] }}" class="checkmark"></span>
-          </label>
-        @endforeach
-       
-    
+            @csrf
 
 
+            <button class="btn btn-primary m-1" type="submit" name="action" value="update">Update select</button>
+            <br>
+            <div class="row">
+                <div class="col-12">
 
+                    <div class="form-group">
+                        <label for="mainActivity">Main activity</label>
+                        <select class="form-control" id="mainActivity" name="mainActivity">
+                            @foreach ($activityValues->main_activities as $item)
+                                <option value="{{ $item['id'] }}">{{ $item['activity'] }}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <span>Scaled values</span>
+            </div>
+
+            @foreach ($activityValues->scaled_activities as $item)
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="form-group">
+                            <label for="{{ $item['id'] }}">{{ $item['activity'] }}</label>
+                            <select class="form-control" id="{{ $item['id'] }}" name="scaled[]">
+                                <option value= "1">1</option>
+                                <option value= "2">>2</option>
+                                <option value= "3">>3</option>
+                                <option value= "4">>4</option>
+                                <option value= "5">>5</option>
+                                <option value= "6">>6</option>
+                                <option value= "7">>7</option>
+                                <option value= "8">>8</option>
+                                <option value= "9">>9</option>
+                                <option value= "10">>10</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+            @endforeach
+
+
+
+
+
+
+
+            @php
+                $moduloCounter = 1;
+            @endphp
+
+            @foreach ($activityLog->activity_data as $key => $item)
+                @if ($key % 4 == 0)
+                    {{ $moduloCounter - 1 }}:00 - {{ $moduloCounter }}:00
+
+                    {{-- count iers   {{ $moduloCounter }} --}}
+
+                    @php
+                        $moduloCounter = $moduloCounter + 1;
+                    @endphp
+                @endif
+                @if ($item['main_activity'] == null)
+                    <label class="containert">checkbox {{ $item['id'] }} empty
+                        <input id="{{"box_". $item['id'] }}" name="boxOn[]" value="{{ $item['id'] }}" type="checkbox">
+                        <span style="background-color:chartreuse" class="checkmark"></span>
+                    </label>
+                @else
+                    <label class="containert">checkbox {{ $item['id'] }} {{ $item['main_activity'] }}
+                        <input id="{{"box_". $item['id'] }}" name="boxOn[]" value="{{ $item['id'] }}" type="checkbox">
+                        <span style="background-color:{{ $item['color'] }}" class="checkmark"></span>
+                    </label>
+                @endif
+            @endforeach
+            <button class="btn btn-primary m-1" type="submit" name="action" value="update">Update select</button>
+
+        </form>
+    </div>
+
+    <div>
+
+        <h1>Custom Checkboxes</h1>
+        <label class="containert">One
+            <input style="background-color: #2196F3;" type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+        </label>
+        <label class="containert">Two
+            <input style="background-color: #2196F3;" type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+        <label class="containert">Three
+            <input type="checkbox">
+            <span style="background-color:blueviolet" class="checkmark"></span>
+        </label>
+        <label class="containert">Four
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
 
 
     </div>
-
-<div>
-
-    <h1>Custom Checkboxes</h1>
-    <label class="containert">One
-      <input style="background-color: #2196F3;" type="checkbox" checked="checked">
-      <span class="checkmark"></span>
-    </label>
-    <label class="containert">Two
-      <input style="background-color: #2196F3;"  type="checkbox">
-      <span class="checkmark"></span>
-    </label>
-    <label class="containert">Three
-      <input type="checkbox">
-      <span style="background-color:blueviolet" class="checkmark"></span>
-    </label>
-    <label class="containert">Four
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </label>
-    
-
-</div>
 
     <div class="container">
         <div class="row">
