@@ -29,9 +29,8 @@
     <tbody>
         @foreach ($reportsLastFiveDays as $day)
 
-<a href="{{route('client.update-personal-information',['id'=>Auth::id()])}}">
 
-<tr >
+<tr onclick="location.href='{{route('client.update-personal-information',['id'=>Auth::id()])}}'">
 
     <td>    <a href="{{route('client.update-personal-information',['id'=>Auth::id()])}}">
         {{ $day->created_at ->diffForHumans() }} </a></td>
@@ -45,7 +44,6 @@
 
     </td>
   </tr>
-</a>
 
 @endforeach
   
