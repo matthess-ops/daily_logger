@@ -57,5 +57,10 @@ class Client extends Model
         return $this->hasOne(ActivityValue::class,'user_id','user_id');
     }
 
+    public function reports(){
+        return $this->hasMany(Report::class,'user_id','user_id');
+        // return $this->hasOne(Report::class,'user_id','user_id');
+    }
+
  
 }

@@ -1,6 +1,7 @@
 @extends('layouts.mentorNav')
 
 @section('content')
+{{ $reports }}
 <ul>
     <li> get all open daily mentor reports (aka the reports that the mentors need to fll out for their clients)</li>
     <li> create a table with mentor reports also include client name and email</li>

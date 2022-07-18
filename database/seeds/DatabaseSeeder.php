@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ActivityValuesSeeder::class);
 
         $this->call(ActivityLogsSeeder::class);
+        $this->call(ReportsSeeder::class);
+
 
     }
 }

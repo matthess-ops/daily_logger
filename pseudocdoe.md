@@ -1,3 +1,23 @@
+rapportages client stuff
+
+-db table client_reports
+-create an migration and seed
+-migration user_id, first_filled (check when the client first filled the report)
+datetime (01-01-22),
+done (check if the daily report is fully filled)
+questions (json array of the questions that needs to be filled)
+- dialy report blade -> list of the last 5 daily reports plus if they are already filled or not
+- 
+
+daily-report index van maken
+show the last 5 daily reports list and if they are totally filled or not etc etc
+show an edit page
+
+
+
+
+
+
 activity logger:
 
 24 x4 checkboxes. Elke check box is 15 min. Elke check box heeft de state van

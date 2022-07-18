@@ -34,7 +34,7 @@
           <ul class="navbar-nav mr-auto">
 
             <li class="nav-item">
-              <a class="nav-link {{ Route::currentRouteNamed('client.daily-report') ? 'active' : '' }}" href="{{ route('client.daily-report') }}">Rapportage</a>
+              <a class="nav-link {{ Route::currentRouteNamed('client.reports') ? 'active' : '' }}" href="{{ route('client.reports') }}">Rapportage</a>
             </li>
             {{-- <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteNamed('client.activities-logger') ? 'active' : '' }}" href="{{ route('client.activities-logger') }}">Activiteiten</a>

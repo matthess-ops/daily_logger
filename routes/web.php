@@ -37,18 +37,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 ///////////client routes////////////////
 
-Route::get('/client/daily-report', function () {
-    return view('client.daily-report');
-})->name('client.daily-report')->middleware('auth','checkIsClient');
+//client report routes
+
+// Route::get('/client/daily-report', function () {
+//     return view('reports.daily-report');
+// })->name('client.daily-report')->middleware('auth','checkIsClient');
+
+
+Route::get('/client/reports', 'ReportController@index'
+)->name('client.reports')->middleware('auth','checkIsClient');
 
 
 /////////////client activities/////////////////
-
-// Route::get('/client/activities-logger', function () {
-//     return view('client.activities.activities-logger');
-// })->name('client.activities-logger')->middleware('auth','checkIsClient');
-
-
 
 
 Route::get('/client/activities-logger/edit', 'ActivitiesController@edit'
@@ -64,8 +64,16 @@ Route::get('/client/activities-config' , 'ActivitiesConfigController@index'
 Route::post('/client/activities-config/delete/mainactivity' , 'ActivitiesConfigController@deleteMainActivity'
 )->name('client.activities-config.delete.mainactivity')->middleware('auth','checkIsClient');
 
+Route::post('/client/activities-config/delete/scaledactivity' , 'ActivitiesConfigController@deleteScaledActivity'
+)->name('client.activities-config.delete.scaledactivity')->middleware('auth','checkIsClient');
+
+
 Route::post('/client/activities-config/add/mainactivity' , 'ActivitiesConfigController@addMainActivity'
 )->name('client.activities-config.add.mainactivity')->middleware('auth','checkIsClient');
+
+Route::post('/client/activities-config/add/scaledactivity' , 'ActivitiesConfigController@addScaledActivity'
+)->name('client.activities-config.add.scaledactivity')->middleware('auth','checkIsClient');
+
 
 /////////////////////////
 Route::get('/client/daily-report-vis', function () {
