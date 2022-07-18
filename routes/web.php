@@ -48,17 +48,24 @@ Route::get('/client/daily-report', function () {
 //     return view('client.activities.activities-logger');
 // })->name('client.activities-logger')->middleware('auth','checkIsClient');
 
+
+
+
 Route::get('/client/activities-logger/edit', 'ActivitiesController@edit'
 )->name('client.activities-logger')->middleware('auth','checkIsClient');
 
 Route::put('/client/activities-logger/{id}', 'ActivitiesController@update'
 )->name('client.update-activities')->middleware('auth','checkIsClient');
 
+// client config routes
+Route::get('/client/activities-config' , 'ActivitiesConfigController@index'
+)->name('client.activities-config')->middleware('auth','checkIsClient');
 
-Route::get('/client/activities-config', function () {
-    return view('client.activities.activities-config');
-})->name('client.activities-config')->middleware('auth','checkIsClient');
+Route::post('/client/activities-config/delete/mainactivity' , 'ActivitiesConfigController@deleteMainActivity'
+)->name('client.activities-config.delete.mainactivity')->middleware('auth','checkIsClient');
 
+Route::post('/client/activities-config/add/mainactivity' , 'ActivitiesConfigController@addMainActivity'
+)->name('client.activities-config.add.mainactivity')->middleware('auth','checkIsClient');
 
 /////////////////////////
 Route::get('/client/daily-report-vis', function () {
