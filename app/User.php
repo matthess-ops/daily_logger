@@ -67,6 +67,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'account_status'=>'boolean',
     ];
 
     public function isClient(){
@@ -107,6 +108,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(ActivityValue::class);
     }
+
+
 
 
 }

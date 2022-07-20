@@ -62,5 +62,21 @@ class Client extends Model
         // return $this->hasOne(Report::class,'user_id','user_id');
     }
 
- 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // public function reportQuestions(){
+
+    //     return $this->hasOne(ActivityValue::class,'user_id','user_id');
+
+    // }
+
+    public function reportQuestion()
+    {
+        return $this->hasOne(ReportQuestion::class,'user_id','user_id');
+    }
+
+
 }

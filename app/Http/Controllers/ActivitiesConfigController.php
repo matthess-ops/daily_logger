@@ -9,14 +9,14 @@ use Error;
 
 class ActivitiesConfigController extends Controller
 {
+    //function = client gets their the activity values
     public function index()
     {
+        //get the client activity values
         $activityValues = ActivityValue::where("user_id", Auth::id())->first();
-
-
-
         return view('client.activities.activities-config', compact('activityValues'));
     }
+
     // delete selected main activity
     public function deleteMainActivity(Request $request)
     {
@@ -345,7 +345,6 @@ class ActivitiesConfigController extends Controller
 
             return redirect()->back();
         } else {
-            error_log("main activity already exists");
             return redirect()->back()->withErrors(['mainActAdd' => 'The main activity already exists']);;
         }
     }
@@ -394,7 +393,7 @@ class ActivitiesConfigController extends Controller
 
     public function deleteScaledActivity(Request $request)
     {
-   
+
         // retrieve activity values
         $activityValues = ActivityValue::where("user_id", Auth::id())->first();
         // get scaled activities column

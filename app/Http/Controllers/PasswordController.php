@@ -76,15 +76,21 @@ class PasswordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //function = update the client password
+     //$id = used to check if the curent auth is the same id
+
     public function update(Request $request, $id)
     {
         if($id == Auth::id()){
+            // get user
             $user = User::find(Auth::id());
+            //validate the passwords
             $validatedData = $request->validate([
                 'password_new' => 'required|confirmed|min:6',
                 'password_new_confirmation'=>'required|min:6',
             ]);
-
+            //update the password column in the user table with the newly encrypted password
             $user->password = bcrypt($request->input('password_new'));
             $user->save();
             Auth::logout();

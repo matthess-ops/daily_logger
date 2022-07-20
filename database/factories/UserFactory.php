@@ -24,5 +24,6 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => bcrypt('password'), // password
         'remember_token' => Str::random(10),
         'role'=> $faker->randomElement(['client', 'admin','mentor']),
+        'account_status'=> (bool)rand(0,1),
     ];
 });

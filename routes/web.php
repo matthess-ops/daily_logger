@@ -47,6 +47,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/client/reports', 'ReportController@index'
 )->name('client.reports')->middleware('auth','checkIsClient');
 
+Route::get('/client/reports/{id}/edit', 'ReportController@edit'
+)->name('client.edit-report')->middleware('auth','checkIsClient');
+
+Route::put('/client/reports/{id}', 'ReportController@update'
+)->name('client.update-report')->middleware('auth','checkIsClient');
+
+
 
 /////////////client activities/////////////////
 
@@ -124,14 +131,31 @@ Route::get('/mentor/daily-reports', function () {
 })->name('mentor.daily-reports')->middleware('auth','checkIsMentor');
 
 Route::get('/mentor/clients', function () {
-    return view('mentor.clients');
 })->name('mentor.clients')->middleware('auth','checkIsMentor');
 
 /////////////////admin routes //////////////////
 
-Route::get('/admin/clients', function () {
-    return view('admin.clients');
-})->name('admin.clients')->middleware('auth','checkIsAdmin');
+Route::get('/admin/clients', 'ClientController@index'
+)->name('admin.clients')->middleware('auth','checkIsAdmin');
+
+Route::get('/admin/search-client', 'ClientController@search'
+)->name('admin.search-client')->middleware('auth','checkIsAdmin');
+
+Route::get('/admin/show-client/{id}', 'ClientController@adminShow'
+)->name('admin.show-client')->middleware('auth','checkIsAdmin');
+
+Route::get('/admin/toggle-client-account/{id}', 'AccountController@toggleClientAccount'
+)->name('admin.toggle-client-account')->middleware('auth','checkIsAdmin');
+
+Route::get('/admin/show-client-report-config/{id}', 'ReportController@showClientReport'
+)->name('admin.show-client-report-config')->middleware('auth','checkIsAdmin');
+
+Route::delete('/admin/delete-client-report-question/{id}', 'ReportController@deleteClientReportQuestion'
+)->name('admin.delete-client-report-question')->middleware('auth','checkIsAdmin');
+
+
+
+
 
 Route::get('/admin/mentors', function () {
     return view('admin.mentors');

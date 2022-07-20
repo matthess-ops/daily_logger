@@ -20,7 +20,7 @@ class CreateReportsTable extends Migration
 
             $table->json('questions');
             $table->json('scores');
-            $table->timestamp('started_at')->nullable();
+            $table->timestamp('filled_at')->nullable();
             $table->boolean('filled')->default(0);
         });
     }

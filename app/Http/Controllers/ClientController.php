@@ -14,51 +14,76 @@ use Illuminate\Validation\Rule;
 
 class ClientController extends Controller
 {
+    //function = admin gets all client +user data, user data contains the all important email.
+    public function index(){
+        //Get all clients with user data
+        $clients = Client::with('user')->paginate(15);
+        //Return the client view with clients plus user data compacted
+        return view('admin.clients',compact('clients'));
 
+    }
 
+    //function = admin search of the clients
+    //$request->input(search) = the search query
+    public function search(Request $request){
+   // Get the search value from the request
+   $search = $request->input('search-client');
+
+   // Search in the firstname and lastname columns of the client table
+   $clients = Client::with('user')
+       ->where('firstname', 'LIKE', "%{$search}%")
+       ->orWhere('lastname', 'LIKE', "%{$search}%")
+       ->paginate(15);
+
+   // Return the search view with the results compacted
+   return view('admin.clients',compact('clients'))->with('searchQuery', $search);
+}
+
+//function = admin gets client plus user data of interest
+//$id =  the id of the user
+public function adminShow($id){
+    // get client plus user data
+    $client = Client::with('user')->find($id);
+    // Return the view with client data
+    return view('admin.client', compact('client'));
+
+}
+
+    //function =   client gets their account data
     public function account(){
+        //Get user user data
         $user = auth::user();
+        //Get user client data
         $client = $user->client;
-        // error_log(json_encode($client));
+        //Return the account view with client and user data compated
         return view('client.account',compact('client','user'));
     }
+    // //save the user inputted client data
+    // public function save(Request $request){
+    //     $user = auth::user();
+    //     $client = $user->client;
 
-    public function save(Request $request){
-        error_log("kom op doe het ");
-        $user = auth::user();
-        $client = $user->client;
-        // error_log(json_encode($client));
-        error_log("HHHHHHHHHHHHH");
-        $validatedData = $request->validate([
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('users')->ignore($user->id, 'id')
-            ],            'street' => 'required',
-            'street_nr' => 'required',
-            'postcode'=>'required',
-            'phone_number'=>'required',
-            'city'=>'required',
-        ]);
-        error_log("werkt tot hier");
-        $client->firstname= $request->input('firstname');
-        $client->lastname= $request->input('lastname');
-        $client->save();
-        return redirect()->back();
-    }
+    //     $validatedData = $request->validate([
+    //         'firstname' => 'required',
+    //         'lastname' => 'required',
+    //         'email' => [
+    //             'required',
+    //             'email',
+    //             Rule::unique('users')->ignore($user->id, 'id')
+    //         ],            'street' => 'required',
+    //         'street_nr' => 'required',
+    //         'postcode'=>'required',
+    //         'phone_number'=>'required',
+    //         'city'=>'required',
+    //     ]);
+    //     $client->firstname= $request->input('firstname');
+    //     $client->lastname= $request->input('lastname');
+    //     $client->save();
+    //     return redirect()->back();
+    // }
 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
 
     /**
      * Show the form for creating a new resource.
