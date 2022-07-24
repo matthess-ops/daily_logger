@@ -52,7 +52,7 @@
                 </div>
               </li>
 
-              
+
 
               <li class="nav-item dropdown {{ Route::currentRouteNamed('client.daily-report-vis') ? 'active' : '' }} {{ Route::currentRouteNamed('client.activities-vis') ? 'active' : '' }}">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

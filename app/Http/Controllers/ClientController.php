@@ -58,6 +58,14 @@ public function adminShow($id){
         //Return the account view with client and user data compated
         return view('client.account',compact('client','user'));
     }
+
+    public function createClient(){
+
+
+    }
+
+
+
     // //save the user inputted client data
     // public function save(Request $request){
     //     $user = auth::user();
@@ -139,14 +147,14 @@ public function adminShow($id){
     // only user can edit his own data
     public function edit($id)
     {
-        if(Auth::id() == $id){
+        // if(Auth::id() == $id){
             $user = User::find(Auth::id());
             $client = $user->client;
             return view('client.account.edit-personal-information',compact('user'));
-        }else{
-            return redirect()->back();
+        // }else{
+        //     return redirect()->back();
 
-        }
+        // }
     }
 
     /**

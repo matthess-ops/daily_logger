@@ -25,6 +25,18 @@
                 </div>
             </div>
         @endforeach
+        {{-- <form action="{{route("admin.add-client-report-question",['id'=>$questions->id])}}" method="post">
+            @csrf --}}
+            <form action="{{ route('admin.add-client-report-question', ['id' => $questions->id]) }}" method="POST">
+                @csrf
+            <div class="form-group">
+          <label for="addQuestion"> add Question</label>
+          <input type="text"
+            class="form-control" name="addQuestion" id="addQuestion" aria-describedby="helpId" placeholder="">
+            <button name="id"  class="btn btn-primary m-1"
+                type="submit">Add</button>
+        </div>
+    </form>
 
 
     </div>

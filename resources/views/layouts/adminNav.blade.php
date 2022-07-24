@@ -35,10 +35,24 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link {{ Route::currentRouteNamed('admin.clients') ? 'active' : '' }}"
                             href="{{ route('admin.clients') }}">Clienten</a>
-                    </li>
+
+                    </li> --}}
+                    <li class="nav-item dropdown {{ Route::currentRouteNamed('admin.clients') ? 'active' : '' }} {{ Route::currentRouteNamed('admin.create-client') ? 'active' : '' }}">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Clienten
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{{ route('admin.clients') }}">Zoek Client</a>
+                          <a class="dropdown-item" href="{{ route('admin.create-client') }}">Add Client</a>
+
+                        </div>
+                      </li>
+
+
+
                     <li class="nav-item">
                         <a class="nav-link {{ Route::currentRouteNamed('admin.mentors') ? 'active' : '' }}"
                             href="{{ route('admin.mentors') }}">Begeleiders</a>

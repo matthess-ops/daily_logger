@@ -50,6 +50,26 @@ class ReportController extends Controller
 
     return redirect()->back();
   }
+
+  //function = admin add a new question to client report questions
+  //$id = is the id of the report of interest
+  // $request contain addQuestion input
+
+  public function addClientReportQuestion($id, Request $request){
+    //get the ReportQuestion of interest
+    $report = ReportQuestion::find($id);
+    // get the questions array
+    $questions = $report->questions;
+    // get the inputted question
+    $newQuestion = $request->input('addQuestion');
+    // add the new inputted question to the questions array
+    array_push($questions,$newQuestion);
+    //save the modified questions array
+    $report->questions = $questions;
+    $report->save();
+    return redirect()->back();  }
+
+
   //function = client gets report data of daily questions
   //id = the id of report of interest.
   public function edit($id){

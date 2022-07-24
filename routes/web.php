@@ -153,6 +153,12 @@ Route::get('/admin/show-client-report-config/{id}', 'ReportController@showClient
 Route::delete('/admin/delete-client-report-question/{id}', 'ReportController@deleteClientReportQuestion'
 )->name('admin.delete-client-report-question')->middleware('auth','checkIsAdmin');
 
+Route::post('/admin/add-client-report-question/{id}' , 'ReportController@addClientReportQuestion'
+)->name('admin.add-client-report-question')->middleware('auth','checkIsAdmin');
+
+// Route::get('/admin/create-client' , 'ClientController@createClient'
+// )->name('admin.create-client')->middleware('auth','checkIsAdmin');
+
 
 
 
@@ -183,3 +189,4 @@ Route::get('/admin/create-mentor', function () {
 // PUT|PATCH     /users/{user}               update  users.update
 // DELETE        /users/{user}               destroy users.destroy
 
+// index,create,store,show,edit,update,destroy
